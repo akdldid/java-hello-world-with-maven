@@ -48,4 +48,12 @@
             </plugin>
         </plugins>
     </build>
+
+	<distributionManagement>
+		<repository>
+			<id>my-project-deploy</id>
+			<name>my-project-deploy</name>
+			<url>http://70.30.174.81:8081/repository/my-project/</url>
+		</repository>
+	</distributionManagement>
 </project>
