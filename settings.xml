@@ -1,0 +1,70 @@
+<settings>
+  <proxies>
+    <proxy>
+      <id>sds-http-proxy</id>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>70.10.15.10</host>
+      <port>8080</port>
+      <nonProxyHosts>localhost|70.*|nexus.sdsdev.co.kr|sds.redii.net</nonProxyHosts>
+    </proxy>
+    <proxy>
+      <id>sds-https-proxy</id>
+      <active>true</active>
+      <protocol>https</protocol>
+      <host>70.10.15.10</host>
+      <port>8080</port>
+      <nonProxyHosts>localhost|70.*|nexus.sdsdev.co.kr|sds.redii.net</nonProxyHosts>
+    </proxy>
+  </proxies>
+
+
+  <mirrors>
+    <mirror>
+      <id>public</id>
+      <name>Maven Repository</name>
+      <url>http://nexus.sdsdev.co.kr:8081/repository/maven-public/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+    <mirror>
+      <id>maven-default-http-blocker</id>
+      <mirrorOf>dummy</mirrorOf>
+      <name>Dummy mirror to override default blocking mirror that blocks http</name>
+      <url>http://0.0.0.0/</url>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+    <profile>
+      <id>sds-nexus</id>
+      <repositories>
+        <repository>
+          <id>sds-nexus-maven-public</id>
+          <url>http://nexus.sdsdev.co.kr:8081/repository/maven-public/</url>
+        </repository>
+        <repository>
+          <id>jenkins-public</id>
+          <url>http://nexus.sdsdev.co.kr:8081/repository/jenkins-ci-release/</url>
+        </repository>
+        <repository>
+          <id>jenkins-releases</id>
+          <url>http://nexus.sdsdev.co.kr:8081/repository/jenkins-releases</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>sds-nexus-maven-public</id>
+          <url>http://nexus.sdsdev.co.kr:8081/repository/maven-public/</url>
+        </pluginRepository>
+        <pluginRepository>
+          <id>jenkins-public</id>
+          <url>http://nexus.sdsdev.co.kr:8081/repository/jenkins-ci-release/</url>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>sds-nexus</activeProfile>
+  </activeProfiles>
+</settings>
